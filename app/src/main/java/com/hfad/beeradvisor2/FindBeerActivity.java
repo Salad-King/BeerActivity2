@@ -8,6 +8,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Spinner;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class FindBeerActivity extends AppCompatActivity {
 
@@ -48,5 +52,13 @@ public class FindBeerActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    //called when the user clicks the FIND BEER button
+    public void onClickFindBeer(View view){
+        TextView brands = (TextView) findViewById(R.id.brands);
+        Spinner color = (Spinner) findViewById(R.id.color);
+        String selection = String.valueOf(color.getSelectedItem());
+        brands.setText("Your Submission "+selection);
     }
 }
