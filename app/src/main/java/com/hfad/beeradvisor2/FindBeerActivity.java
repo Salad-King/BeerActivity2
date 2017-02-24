@@ -12,6 +12,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class FindBeerActivity extends AppCompatActivity {
 
@@ -56,9 +57,15 @@ public class FindBeerActivity extends AppCompatActivity {
 
     //called when the user clicks the FIND BEER button
     public void onClickFindBeer(View view){
+        StringBuilder brandsFormatted = new StringBuilder();
+        BeerExpert expert = new BeerExpert();
         TextView brands = (TextView) findViewById(R.id.brands);
         Spinner color = (Spinner) findViewById(R.id.color);
         String selection = String.valueOf(color.getSelectedItem());
-        brands.setText("Your Submission "+selection);
+        List<String> data = expert.getBrands(selection);
+        for(String brand:data){
+            brandsFormatted.append(brand).append("\n");
+        }
+        brands.setText(brandsFormatted);
     }
 }
